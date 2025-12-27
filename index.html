@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="appTitle">TechTic SA | Currency Converter</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="brand-group">
+        <img src="https://techticsa.com/cdn-cgi/image/format=auto,quality=90/wp-content/uploads/2024/03/6c93368d-2048x617.png" alt="TechTic Logo" class="logo-img">
+      </div>
+      <div class="header-controls">
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle Theme">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+
+        <button id="langToggle" class="icon-btn" style="font-weight: 700; font-size: 14px;">
+          AR
+        </button>
+      </div>
+    </header>
+
+    <div class="converter-card">
+      <div id="overlay" class="overlay-container">
+        <div class="spinner"></div>
+        <div class="critical-error-box">
+            <div class="error-icon">⚠️</div>
+            <div class="error-title" data-i18n="quotaErrorTitle">Service Unavailable</div>
+            <p class="error-desc" data-i18n="quotaErrorDesc">The quote has been reached this month for all available services. Please try again later.</p>
+        </div>
+      </div>
+
+      <div class="input-section">
+        <div class="form-group">
+          <label for="currencySelect" data-i18n="lblCurrency">Select Currency</label>
+          <div class="input-wrapper">
+            <select id="currencySelect">
+              <option value="USD">USD - US Dollar</option>
+              <option value="EUR">EUR - Euro</option>
+              <option value="GBP">GBP - British Pound</option>
+              <option value="CAD">CAD - Canadian Dollar</option>
+              <option value="PHP">PHP - Philippine Peso</option>
+              <option value="INR">INR - Indian Rupee</option>
+              <option value="EGP">EGP - Egyptian Pound</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="amountInput" data-i18n="lblAmount">Enter Amount</label>
+          <div class="input-wrapper">
+            <input type="number" id="amountInput" value="100" min="1" step="any" placeholder="0.00">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="checkbox-wrapper">
+            <input type="checkbox" id="feeCheckbox">
+            <span data-i18n="lblFee">Include Fixed Processing Fee (+35 SAR)</span>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button id="convertBtn" class="btn btn-primary" data-i18n="btnConvert">
+            Convert Now
+          </button>
+          <button id="refreshBtn" class="btn btn-ghost" data-i18n="btnRefresh">
+            Refresh Rates
+          </button>
+        </div>
+      </div>
+
+      <div class="result-section">
+        <div class="conversion-card">
+            <div id="copyFeedback" class="copy-feedback" data-i18n="copySuccess">Copied!</div>
+           
+          <div class="result-label" data-i18n="resTotal">Total Estimate</div>
+          <div id="finalResult" class="result-value" title="Click to copy">-- SAR</div>
+          <div id="breakdownText" class="result-sub">--</div>
+        </div>
+
+        <ul class="info-list">
+          <li>
+            <span data-i18n="resRate">Current Rate</span> <span id="displayRate">--</span>
+          </li>
+          <li>
+            <span data-i18n="resBase">Base Conversion</span> <span id="baseResult">--</span>
+          </li>
+          <li>
+            <span data-i18n="resMargin">Margin (2.5%)</span> <span id="marginResult">--</span>
+          </li>
+          <li>
+            <span data-i18n="resFee">Fixed Fee</span> <span id="feeResult">0.00 SAR</span>
+          </li>
+          <li>
+            <span data-i18n="resTotalAmount">Total Amount</span> <span id="totalAmountResult">--</span>
+          </li>
+          <li style="font-size: 12px; border-bottom: 0;">
+             <span id="lastUpdateText" style="font-weight: 400">--</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <footer> 
+        <p><span data-i18n="footerText">TechTic SA Internal Tools ©</span> <span id="year"></span></p>
+       <p>
+         <span data-i18n="madeBy">Made with ❤️ by</span> 
+         <a href="https://www.linkedin.com/in/mahmoud-elsayed-ismail/" target="_blank">Mahmoud Ismail</a>
+       </p>
+    </footer>
+  </div>
+
+  <script src="JS/script.js"></script>
+</body>
+</html>
